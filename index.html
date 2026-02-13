@@ -46,6 +46,24 @@
   }
 }
 </script>
+<script>
+    // Global error listener to help catch issues on restricted environments
+    window.onerror = function(message, source, lineno, colno, error) {
+        const root = document.getElementById('root');
+        if (root && (root.innerText.includes('Initializing') || root.innerText === '')) {
+            root.innerHTML = `
+                <div class="min-h-screen flex items-center justify-center bg-slate-900 text-white p-4">
+                    <div class="bg-red-900/20 border border-red-500 p-6 rounded-2xl max-w-lg w-full">
+                        <h1 class="text-xl font-bold text-red-400 mb-2">Launch Error</h1>
+                        <p class="text-sm text-slate-300 mb-4">${message}</p>
+                        <p class="text-xs text-slate-500 font-mono">${source}:${lineno}</p>
+                        <button onclick="window.location.reload()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-bold">Retry Load</button>
+                    </div>
+                </div>
+            `;
+        }
+    };
+</script>
 </head>
 <body>
     <div id="root">
