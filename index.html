@@ -36,7 +36,7 @@
             background: #6366f1;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19.0.0",
@@ -46,23 +46,6 @@
     "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
-</script>
-<script>
-    // Global error listener to help catch issues in restricted environments
-    window.onerror = function(message, source, lineno, colno, error) {
-        const root = document.getElementById('root');
-        if (root && root.innerHTML === '') {
-            root.innerHTML = `
-                <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0f172a; color: white; padding: 20px; font-family: sans-serif;">
-                    <div style="background: rgba(220, 38, 38, 0.1); border: 1px solid #ef4444; padding: 24px; border-radius: 16px; max-width: 500px; width: 100%;">
-                        <h1 style="color: #f87171; margin-top: 0;">Compatibility Error</h1>
-                        <p style="font-size: 14px; color: #cbd5e1;">${message}</p>
-                        <button onclick="window.location.reload()" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px;">Retry</button>
-                    </div>
-                </div>
-            `;
-        }
-    };
 </script>
 </head>
 <body>
