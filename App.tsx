@@ -1,11 +1,11 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { GAMES } from './constants';
-import { Game, Category } from './types';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import GameCard from './components/GameCard';
-import GameView from './components/GameView';
+import { GAMES } from './constants.ts';
+import { Game, Category } from './types.ts';
+import Header from './components/Header.tsx';
+import Sidebar from './components/Sidebar.tsx';
+import GameCard from './components/GameCard.tsx';
+import GameView from './components/GameView.tsx';
 
 const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
@@ -17,7 +17,11 @@ const App: React.FC = () => {
   useEffect(() => {
     const saved = localStorage.getItem('nova_favorites');
     if (saved) {
-      setFavorites(JSON.parse(saved));
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse favorites", e);
+      }
     }
   }, []);
 
@@ -50,7 +54,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#0f172a]">
       <Header 
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery} 

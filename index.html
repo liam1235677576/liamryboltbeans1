@@ -38,7 +38,9 @@
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/"
   }
@@ -46,7 +48,15 @@
 </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Fallback for loading -->
+        <div class="min-h-screen flex items-center justify-center bg-slate-900 text-white">
+            <div class="text-center">
+                <i class="fas fa-circle-notch fa-spin text-4xl text-indigo-500 mb-4"></i>
+                <p class="text-slate-400 animate-pulse">Initializing NovaArcade...</p>
+            </div>
+        </div>
+    </div>
     <script type="module" src="index.tsx"></script>
 </body>
 </html>
